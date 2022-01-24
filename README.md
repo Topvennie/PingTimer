@@ -59,7 +59,7 @@ Some quick examples on how to add roles.
 ##
 
 **Q:** How do I specify the role for `pt!add` and `pt!remove`?\
-**A:** You can either ping the role, use the [role id](https://discordhelp.net/role-id) or use it's name.
+**A:** You can either ping the role, use the [role id](https://discordhelp.net/role-id) or use its name.
 
 ##
 
