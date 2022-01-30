@@ -41,6 +41,7 @@ Replace `[]` _including the brackets themselves_ with the desired value.
 - Let the bot ping a role every X minutes / hours / days / ...
 - Ping a role for example every Sunday at 12:00
 - Custom prefix
+- Cooldown for new members to ping roles
 
 ## Some Examples
 Some quick examples on how to add roles.
