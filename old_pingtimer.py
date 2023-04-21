@@ -45,7 +45,7 @@ slash = SlashCommand(bot, sync_commands=True)
 
 # Reads the data of a JSON file
 def read_json() -> dict:
-    with open("pingtimer.json", "r") as file:
+    with open("roles.json", "r") as file:
         data = json.load(file)
         file.close()
     return data
@@ -53,7 +53,7 @@ def read_json() -> dict:
 
 # Dump data in a JSON file
 def dump_json(data:dict) -> None:
-    with open("pingtimer.json", "w") as file:
+    with open("roles.json", "w") as file:
         json.dump(data, file)
         file.close()
 
