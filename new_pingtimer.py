@@ -56,12 +56,28 @@ async def on_ready():
 
 @client.event
 async def on_message(message: discord.Message) -> None:
-    raise NotImplementedError()
+    if message.author.bot:
+        return
+
+    if message.raw_role_mentions:
+        for role_id in message.raw_role_mentions:
+            success = roleTracker.get_role(message.guild.id, role_id)
+            if success:
+                role = message.guild.get_role(role_id)
+                if role:
+                    try:
+                        await role.edit(
+                            mentionable=False,
+                            reason=f"{message.author.name}#{message.author.discriminator} pinged the role!"
+                        )
+                        roleTracker.ping_role(message.guild.id, role_id)
+                    except discord.Forbidden:
+                        return
 
 
 @client.event
 async def on_guild_remove(guild: discord.Guild) -> None:
-    raise NotImplementedError()
+    roleTracker.remove_guild(guild.id)
 
 
 ################
