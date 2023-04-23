@@ -1,12 +1,11 @@
 from typing import Optional
 
+import discord
 from discord import app_commands
 from discord.ext import tasks
 
 from common_functions import *
 from roleTracker import RoleTracker
-
-MY_GUILD = discord.Object(id=1098923651371368568)
 
 
 ###############
@@ -23,8 +22,7 @@ class PingTimer(discord.Client):
 
     # Sync commands and start tasks
     async def setup_hook(self) -> None:
-        self.tree.copy_global_to(guild=MY_GUILD)
-        await self.tree.sync(guild=MY_GUILD)
+        await self.tree.sync()
         self.expired_cooldown_role.start()
         self.cleanup.start()
 
@@ -288,10 +286,11 @@ async def _check(
         )
         return
 
-    editable_roles = []
+    editable_roles: list[discord.Role] = []
     for role in interaction.guild.roles:
         if role < highest_role:
-            editable_roles.append(role)
+            if not role.is_default():
+                editable_roles.append(role)
         else:
             break
 
@@ -318,8 +317,7 @@ async def _check(
         roles = ""
         for role in editable_roles:
             if len(roles) < 2000:
-                if not role.is_default():
-                    roles += f"{role.mention} "
+                roles += f"{role.mention} "
             else:
                 roles += "..."
                 break
@@ -415,7 +413,7 @@ async def _info(
                 "value": "Quick Troubleshooting:\n\n"
                          "Make sure you have the `manage roles` permission.\n\n"
                          "Check if the bot is allowed to make slash commands and has the `manage roles permission`.\n\n"
-                         "Nothing working? Join the [support discord server](https://discord.gg/VNUG8xFZ2k) for more "
+                         "Nothing working? Join the [support discord server](https://discord.gg/nCRAMhuMcg) for more "
                          "help!"
             },
             {
@@ -451,7 +449,7 @@ async def _help(
                 "value": "Run the `/check` command."
                          "Make sure you have the `manage roles` permission.\n\n"
                          "Check if the bot is allowed to make slash commands and has the `manage roles permission`.\n\n"
-                         "Need more help? Join the [support discord server](https://discord.gg/VNUG8xFZ2k) for more "
+                         "Need more help? Join the [support discord server](https://discord.gg/nCRAMhuMcg) for more "
                          "help!"
             },
             {

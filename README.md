@@ -18,13 +18,14 @@ Click [here](https://discord.com/api/oauth2/authorize?client_id=8441914557572055
 
 ### Role Management
 - `/add [role] [time] [interval]` - Adds a new timer on a role. 
-- `/remove [role]` -> Removes the timer of a role.
+- `/remove [role]` - Removes the timer of a role.
+- `/reset [role]` - Resets the timer of a role.
 
 ### User Commands
-- `/list` -> Gives an overview of every role that has a timer and the time left on the timer.
+- `/list` - Gives an overview of every role that has a timer and the time left on the timer.
 
 ### Support
-- `/help` -> Displays the help menu.
+- `/help` - Displays the help menu.
 
 
 ## Upcoming Features
