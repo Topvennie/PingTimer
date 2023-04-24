@@ -316,7 +316,7 @@ async def _check(
     else:
         roles = ""
         for role in editable_roles:
-            if len(roles) < 2000:
+            if len(roles) < 1000:
                 roles += f"{role.mention} "
             else:
                 roles += "..."
