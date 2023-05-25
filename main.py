@@ -236,7 +236,7 @@ async def _reset_role(
             description=f"No timer set up for {role.mention}.",
             colour=Colour.RED
         )
-    elif not timer:
+    elif not timer and role.mentionable:
         embed = make_embed(
             description=f"{role.mention} is already mentionable"
         )
@@ -389,7 +389,7 @@ async def _list_roles(
     )
     await interaction.response.send_message(
         embed=embed,
-        ephemeral=False
+        ephemeral=False,
     )
 
 

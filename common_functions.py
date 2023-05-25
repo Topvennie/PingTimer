@@ -47,21 +47,23 @@ def get_next_ping(unix: int) -> str:
     if unix - now <= 0:
         return '**Now**'
 
-    total_minutes = (unix - now) / 60
-    minutes = ceil(total_minutes % 60)
-    hours = ceil(total_minutes // 60)
+    return f"<t:{unix}:R>"
 
-    if hours >= 24:
-        days = round(hours / 24, 1)
-        text = f"`{days}` day{'' if days == 1 else 's'}"
-    elif hours == 23 and minutes == 60:
-        text = "`1` day"
-    elif hours == 0:
-        text = f"`{minutes}` minute{'' if minutes == 1 else 's'}"
-    else:
-        text = f"`{hours}` hour{'' if hours == 1 else 's'} `{minutes}` minute{'' if minutes == 1 else 's'}"
-
-    return text
+    # total_minutes = (unix - now) / 60
+    # minutes = ceil(total_minutes % 60)
+    # hours = ceil(total_minutes // 60)
+    #
+    # if hours >= 24:
+    #     days = round(hours / 24, 1)
+    #     text = f"`{days}` day{'' if days == 1 else 's'}"
+    # elif hours == 23 and minutes == 60:
+    #     text = "`1` day"
+    # elif hours == 0:
+    #     text = f"`{minutes}` minute{'' if minutes == 1 else 's'}"
+    # else:
+    #     text = f"`{hours}` hour{'' if hours == 1 else 's'} `{minutes}` minute{'' if minutes == 1 else 's'}"
+    #
+    # return text
 
 
 def get_ping_interval(interval: int, time_intervals: list[tuple[int, str]]) -> str:
